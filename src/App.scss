@@ -1,0 +1,115 @@
+body {
+    font-family: Montserrat;
+}
+.App {
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+}
+.active {
+    box-shadow: 0px 5px 46px 2px rgba(5, 5, 5, 0.3);  
+}
+
+.finansPanel {
+    text-align: center;
+    min-height: 70ch;
+    padding: 30px;
+    width: 45%;
+    margin: 25px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+        & img {
+            height: 70px;
+            width: 70px;
+        }
+
+        &-categories {
+            margin-top: 3ch;
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+        &-categories__item {
+            padding-top: 10px;
+            text-align: center;
+            margin: 42px;
+            width: 21%;
+            border-radius: 20px;
+
+            &:hover {
+                box-shadow: 0px 5px 46px 2px rgba(5, 5, 5, 0.2);
+            }
+        }
+
+        &-add {
+            &__input-sum {
+                margin-top: 30px;
+                padding: 17px 100px 17px 30px;
+                border-radius:20px 0px 0px 20px;
+                border:rgb(44, 43, 43);
+                box-shadow: -8px 5px 46px 2px rgba(5, 5, 5, 0.2);
+                font-family: Monospace;
+                
+            }
+            &__input-data {
+                margin-top: 30px;
+                padding: 15px 10px;
+                border-radius:0px 20px 20px 0px;
+                border:rgb(44, 43, 43);
+                box-shadow: 9px 5px 46px 2px rgba(5, 5, 5, 0.2);
+                font-family: Monospace;
+                
+            }
+
+            & button {
+                margin-left: 10px;
+                background-color: #4CAF50; /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                font-family: Monospace;
+                border-radius:20px;
+            }
+        }
+
+}
+
+.grahics {
+    width: 52%;
+}
+.CircleDiogram {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 45ch;
+    padding: 30px;
+    min-width: 50%;
+    margin: 25px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+}
+
+.LineDiogram {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 24ch;
+    padding: 30px;
+    min-width: 50%;
+    margin: 25px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+}
