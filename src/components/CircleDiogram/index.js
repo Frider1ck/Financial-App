@@ -9,9 +9,9 @@ const options = {
   maintainAspectRatio: false,
 };
 
-const CircleDiogram = () => {
+const CircleDiogram = ({name, url}) => {
    const [data, setData] = React.useState({
-    labels: ["Бытовые", "Продукты", "Транспорт", "Покупки", "Услуги", "Досуг"],
+    labels: name,
     datasets: [
       {
         label: "# of Votes",
@@ -31,25 +31,18 @@ const CircleDiogram = () => {
    
 
   React.useEffect(() => {
-    axios.get('http://localhost:3001/Spends').then(({data}) => {
-        const Obj = {
-            '0': 0,
-            '1': 0,
-            '2': 0,
-            '3': 0,
-            '4': 0,
-            '5': 0
-        }
+    axios.get(`http://localhost:3001/${url}`).then(({data}) => {
+        const Obj = [0,0,0,0,0,0]
         for (let i = 0; i < data.length; i++) {
             const item = data[i]
             Obj[item.Categories] = Obj[item.Categories] + item.Sum;
         }
         setData({
-          labels: ["Бытовые", "Продукты", "Транспорт", "Покупки", "Услуги", "Досуг"],
+          labels: name,
           datasets: [
             {
               label: "# of Votes",
-              data: [Obj[0],Obj[1],Obj[2],Obj[3],Obj[4],Obj[5]],
+              data: Obj,
               fill: false,
               backgroundColor: [
                 "rgba(255, 99, 132, 0.6)",

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import items from "./CategoriesDb";
-const FinansPanel = () => {
+const FinansPanel = ({items, url}) => {
   const [activeCategories, setActiveCategories] = useState(10);
   const [loading, setLoading] = useState({
     load: 'Добавить',
@@ -35,7 +34,7 @@ const FinansPanel = () => {
     })
 
     axios
-      .post("http://localhost:3001/Spends", {
+      .post(`http://localhost:3001/${url}`, {
         id: activeCategories*(Math.random()* 1000),
         Categories: activeCategories,
         Sum: +(e.target[0].value),
@@ -75,7 +74,7 @@ const FinansPanel = () => {
         })}
       </div>
       <form className="finansPanel-add" onSubmit={addSpend}>
-        <h2>Выберете категорию и запишите трату</h2>
+        <h2>Выберете категорию и запишите сумму</h2>
         <input
           className="finansPanel-add__input-sum"
           type="text"
