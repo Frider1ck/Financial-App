@@ -1,14 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../hooks/use-them";
+
 function Header() {
   const [activeCategories, setActiveCategories] = React.useState(1);
+  const {theme, setTheme} = useTheme()
+
   const onSelect = (index) => {
     setActiveCategories(index);
   };
 
+  const handleLightThemeClick = () => {
+    setTheme('light');
+  }
+
+  
+  const handleDarttThemeClick = () => {
+    setTheme('dart');
+  }
+
   return (
     <div className="Header">
-      <div className="change-button">
+      <div className="Header__change-button">
       <Link to="/income">
         <button
           className={activeCategories === 0 ? "active" : ""}
@@ -27,18 +40,18 @@ function Header() {
         </button>
       </Link>
       </div>
-      <div>
+      <div className="Header__theme">
       <button
-          className={activeCategories === 1 ? "active" : ""}
-          onClick={() => onSelect(1)}
+          className={'Header__theme-light'}
+          onClick={handleLightThemeClick}
         >
-          Расходы
+          Light
         </button>
         <button
-          className={activeCategories === 1 ? "active" : ""}
-          onClick={() => onSelect(1)}
+          className={"Header__theme-dart"}
+          onClick={handleDarttThemeClick}
         >
-          Расходы
+          Dart
         </button>
       </div>
     </div>

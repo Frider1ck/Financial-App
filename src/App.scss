@@ -1,24 +1,28 @@
 body {
     font-family: Montserrat;
+    background-color: var(--body-background-color);
+    color: var(--font-color);
 }
 .App {
-    // display: grid;
-    // grid-template-columns: 1fr 1fr 1fr;
     display: flex;
 }
 .active {
-    box-shadow: 0px 5px 46px 2px rgba(5, 5, 5, 0.3);  
+    box-shadow: var(--shadow);  
 }
 
 html[data-theme='light'] {
     --body-background-color: white;
     --font-color: black;
+    --shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    --light-button: white;
 
 }
 
 html[data-theme='dart'] {
-    --body-background-color: rgb(22, 20, 20);
+    --body-background-color: rgb(44, 40, 40);
     --font-color: white;
+    --shadow: 0px 5px 46px 2px rgba(59, 73, 83, 0.5);
+    --light-button: rgb(163, 158, 158);
 }
 
 .finansPanel {
@@ -30,9 +34,9 @@ html[data-theme='dart'] {
     margin: 20px 25px 25px 25px;
     border-radius: 40px;
     box-sizing: border-box;
-    -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    -webkit-box-shadow: var(--shadow);
+    -moz-box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
         & img {
             height: 70px;
             width: 70px;
@@ -45,6 +49,7 @@ html[data-theme='dart'] {
 
         }
         &-categories__item {
+            cursor: pointer;
             padding-top: 10px;
             text-align: center;
             margin: 30px 42px;
@@ -64,19 +69,25 @@ html[data-theme='dart'] {
                 border:rgb(44, 43, 43);
                 box-shadow: -8px 5px 46px 2px rgba(5, 5, 5, 0.2);
                 font-family: Monospace;
+                color:white;
+                background-color:var(--light-button);
+                
                 
             }
             &__input-data {
+                cursor: pointer;
                 margin-top: 30px;
                 padding: 15px 10px;
                 border-radius:0px 20px 20px 0px;
                 border:rgb(44, 43, 43);
                 box-shadow: 9px 5px 46px 2px rgba(5, 5, 5, 0.2);
                 font-family: Monospace;
+                background-color:var(--light-button);
                 
             }
 
             & button {
+                cursor: pointer;
                 margin-left: 10px;
                 background-color: #4CAF50; /* Green */
                 border: none;
@@ -97,6 +108,7 @@ html[data-theme='dart'] {
     width: 52%;
 }
 .CircleDiogram {
+    background-color: var(--body-background-color);
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -106,12 +118,13 @@ html[data-theme='dart'] {
     margin: 25px;
     border-radius: 40px;
     box-sizing: border-box;
-    -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    -webkit-box-shadow: var(--shadow);
+    -moz-box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
 }
 
 .LineDiogram {
+    background-color: var(--body-background-color);
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -121,9 +134,9 @@ html[data-theme='dart'] {
     margin: 20px 25px 25px 25px;
     border-radius: 40px;
     box-sizing: border-box;
-    -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+    -webkit-box-shadow: var(--shadow);
+    -moz-box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
 }
 
 .Header {
@@ -134,24 +147,59 @@ html[data-theme='dart'] {
     display: flex;
     justify-content: space-between;
 
-    .change-button {
+    &__change-button {
         display: flex;
         justify-content: center;
         width:50%;
-    }
-    
-    button {
-        background-color:white;
-        font-size: 20px;
-        padding: 17px 90px;
-        border:none;
-        border-radius: 40px;
-        margin-right: 46px;
-        -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-        -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
-        box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.2);
+
+        button {
+            cursor: pointer;
+            background-color:var(--body-background-color);
+            color: var(--font-color);
+            font-size: 20px;
+            padding: 15px 75px;
+            border:none;
+            border-radius: 40px;
+            margin-right: 46px;
+            -webkit-box-shadow: var(--shadow);
+            -moz-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
+        }
     }
 
+    &__theme {
+
+        button {
+            cursor: pointer;
+            font-size: 20px;
+            padding: 17px 30px;
+            border:none;
+            border-radius: 40px;
+            margin-left: 20px;
+            -webkit-box-shadow: var(--shadow);
+            -moz-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
+        }
+
+        &-light {
+            background: var(--light-button);
+            color:var(--font-color);
+            -webkit-box-shadow: var(--shadow);
+            -moz-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
+        }
+
+        &-dart {
+            background:rgb(54, 49, 49);
+            color:white;
+            -webkit-box-shadow: var(--shadow);
+            -moz-box-shadow: var(--shadow);
+            box-shadow: var(--shadow);
+        }
+
+    }
+    
+    
     .active {
         -webkit-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.6);
         -moz-box-shadow: 0px 5px 46px 2px rgba(34, 60, 80, 0.6);
