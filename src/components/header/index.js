@@ -4,7 +4,7 @@ import { useTheme } from "../hooks/use-them";
 
 function Header() {
   const [activeCategories, setActiveCategories] = React.useState(1);
-  const {theme, setTheme} = useTheme()
+  const {setTheme} = useTheme()
 
   const onSelect = (index) => {
     setActiveCategories(index);

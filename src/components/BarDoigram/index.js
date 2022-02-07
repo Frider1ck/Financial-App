@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import {useSelector, useDispatch} from 'react-redux'
+import { setLabel } from '../redux/barReducer';
+import {setAsyncBarData} from '../redux/async/asyncBar'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,44 +30,20 @@ ChartJS.register(
 
 
 const BarDoigram = ({name, url}) => {
-   const [data, setData] = React.useState({
-    labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Инюнь', 'Июль','Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-    datasets: [
-      {
-        label: name,
-        data: [100,200,300,400],
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      }
-    ],
-  })
+
+  const dispach = useDispatch();
+   const data = useSelector((store) => store.barReducer)
    
+   const setLabels = () => {
+     dispach(setLabel(name))
+   }
+   const setAsyncDataz = () => {
+     dispach(setAsyncBarData(url))
+   }
 
   React.useEffect(() => {
-    axios.get(`http://localhost:3001/${url}`).then(({data}) => {
-      data.map(item => {
-        item.Data = +(item.Data.slice(5,7));
-
-      })
-        const Obj = [0,0,0,0,0,0,0,0,0,0,0,0]
-
-
-        for (let i = 0; i < data.length; i++) {
-            const item = data[i]
-            Obj[item.Data - 1] = Obj[item.Data - 1] + item.Sum;
-        }
-
-        setData({
-          labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Инюнь', 'Июль','Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-          datasets: [
-            {
-              label: name,
-              data: Obj,
-              backgroundColor: 'rgba(255, 99, 132, 0.65)',
-            }
-          ],
-        })
-
-    });
+    setLabels();
+    setAsyncDataz();
   }, []);
 
 

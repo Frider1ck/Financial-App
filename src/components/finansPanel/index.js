@@ -1,37 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
+import {useSelector, useDispatch} from 'react-redux'
+
+import {setLoading, setActiveCategories} from '../redux/PanelReduser'
+
 const FinansPanel = ({items, url}) => {
-  const [activeCategories, setActiveCategories] = useState(10);
-  const [loading, setLoading] = useState({
-    load: 'Добавить',
-    error:''
-  })
+
+  const dispach = useDispatch();
+
+  const activeCategories = useSelector((store) => store.PanelReduser.activeCategories);
+  const loading = useSelector((store) => store.PanelReduser.loading);
+  
+
   const onSelect = (index) => {
-    setActiveCategories(index);
+    dispach(setActiveCategories(index));
   };
 
   const addSpend = (e) => {
     e.preventDefault();
 
     if(!e.target[0].value) {
-      setLoading({
+      const Obj = {
         load: 'Добавить',
         error: 'Вы не ввели сумму'
-      })
+      }
+      
+      dispach(setLoading(Obj))
       return;
     }
 
     if(!e.target[1].value) {
-      setLoading({
+      const Obj = {
         load: 'Добавить',
         error: 'Вы не ввели дату'
-      })
+      }
+      
+      dispach(setLoading(Obj))
       return;
     }
   
-    setLoading({
+    dispach(setLoading({
       load: 'Добавление...'
-    })
+    }))
 
     axios
       .post(`http://localhost:3001/${url}`, {
@@ -47,9 +57,9 @@ const FinansPanel = ({items, url}) => {
         console.log(error.response.data);
       });
 
-      setLoading({
+      dispach(setLoading({
         load: 'Добавить'
-      })
+      }))
   };
 
   return (
